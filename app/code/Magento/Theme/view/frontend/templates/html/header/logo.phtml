@@ -7,7 +7,8 @@
 /**
  * @var \Magento\Theme\Block\Html\Header\Logo $block
  */
-$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt()
+$logoAlt = $block->getLogoAlt();
+$storeName = $block->getThemeName() ?: $logoAlt;
 ?>
 <span data-action="toggle-nav" class="action nav-toggle"><span><?= $block->escapeHtml(__('Toggle Nav')) ?></span></span>
 <a
@@ -16,8 +17,8 @@ $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAl
     title="<?= $block->escapeHtmlAttr($storeName) ?>"
     aria-label="store logo">
     <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
-         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
-         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         title="<?= $block->escapeHtmlAttr($logoAlt) ?>"
+         alt="<?= $block->escapeHtmlAttr($logoAlt) ?>"
             <?= $block->getLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getLogoWidth()) . '"' : '' ?>
             <?= $block->getLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getLogoHeight()) . '"' : '' ?>
     />
